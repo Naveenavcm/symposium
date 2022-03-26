@@ -1,0 +1,47 @@
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<form id="online">
+   <input type="submit"  type="button" value="Online">
+</form>
+<div id="res"><b></b></div>
+<form id= "onspot">
+  <input type="submit" type="button" value="Onspot">
+</form>
+<div id="rep"><b></b></div>
+</html>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#online').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: 'online.html',
+            success: function(response)
+            {
+         $('#res').html(response);
+         //console.log("im here");
+           }
+       });
+     });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#onspot').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: 'onspot.html',
+            success: function(response)
+            {
+         $('#res').html(response);
+        // console.log("im here");
+           }
+       });
+     });
+});
+</script>

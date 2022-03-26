@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+    />
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+</head>
+  <body>
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1>Onspot Registration</h1>
+      <form method="POST" id="onspot">
+
+          <label for="name">Name</label>
+
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Full Name"
+
+          required><br>
+  
+
+        
+          <label for="rollNumber">Roll Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="rollNo"
+            name="rollNo"
+            placeholder="roll number"
+          required><br>
+       
+
+        
+          <label for="event">Event Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="event"
+            name="event"
+            placeholder="hackathon"
+          required/><br>
+       
+
+        <label for="phoneNo">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phoneNo"
+            name="phoneNo"
+            placeholder="10 digit number" 
+            pattern="[6-9]{1}[0-9]{9}"
+          required><br>
+        
+        <input id="submit" type="submit" class="btn btn-success" value="Submit">
+          
+        </input>
+      </form>
+    </div>
+<div id="res"><b></b></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#onspot').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: 'onspot.php',
+            data: $(this).serialize(),
+            success: function(response)
+            {
+         $('#res').html(response);
+        // console.log("im here");
+           }
+       });
+     });
+});
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+function getdata()
+{
+   var name = document.getElementById("id").value;
+    
+   if(name)
+   {
+    $.ajax({
+      type: 'get',
+      url: 'online.php',
+      data: {
+         q:name,
+      },
+      success: function (response) {
+         $('#res').html(response);
+         console.log("im here");
+      }
+    });
+   }
+   else
+   {
+    $('#res').html("Enter the user's I'd");
+   }
+}
+</script>
+</head>
+<body>
+
+<form>
+<h2>Enter your id/mobile number:</h2>
+<input id="id" type="text">
+<input id="submit" onclick="getdata()" type="button" value="Submit">
+</form>
+<br>
+<div id="res"><b>User Information</b></div>
+
+</body>
+</html>
